@@ -6,31 +6,23 @@ import "./App.css";
 const App = () => {
   return (
     <Router>
+      <nav>
+        <Link
+          style={{
+            alignItems: "center",
+            alignContent: "center",
+            justifyContent: "center",
+          }}
+          to="/login"
+        >
+          Login
+        </Link>
+        | <Link to="/register">Register</Link>
+      </nav>
       <Routes>
-        <Route
-          path="/login"
-          element={
-            <div className="form-section">
-              <nav>
-                <Link to="/login">Login</Link> |
-                <Link to="/register">Register</Link>
-              </nav>
-              <Login />
-            </div>
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <div className="form-section">
-              <nav>
-                <Link to="/login">Login</Link> |
-                <Link to="/register">Register</Link>
-              </nav>
-              <Register />
-            </div>
-          }
-        />
+        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
   );
