@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Categories from "./pages/Category";
 import CategoryPage from "./components/CategoryPage";
+import UserProfile from "./pages/UserProfile";
 
 import "./App.css";
 const App = () => {
@@ -21,7 +22,8 @@ const App = () => {
           Login
         </Link>
         | <Link to="/register">Register</Link>
-         | <Link to="/category">Category</Link>
+         | <Link to="/UserProfile">UserProfile</Link>
+          | <Link to="/category">Category</Link>
       </nav>
       <Routes>
         <Route path="/" element={<Login />} />
@@ -29,6 +31,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/category" element={<Categories />} />
         <Route path="/category/:categoryName" element={<CategoryPage />} />
+        <Route path="/UserProfile" element={<UserProfile />} />
       </Routes>
     </Router>
   );
