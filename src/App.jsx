@@ -7,6 +7,7 @@ import CategoryPage from "./components/CategoryPage";
 import UserProfile from "./pages/UserProfile";
 
 import "./App.css";
+
 const App = () => {
   return (
     <Router>

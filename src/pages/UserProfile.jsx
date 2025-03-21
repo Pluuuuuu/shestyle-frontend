@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./UserProfile.css"; // Import CSS file
+import "../CSS/UserProfile.css"; // Import CSS file
 
 const UserProfile = () => {
   const [user, setUser] = useState(null);
@@ -48,12 +48,14 @@ const UserProfile = () => {
   const handleUsernameChange = () => {
     if (newUsername.trim() !== "") {
       updateUserProfile({ name: newUsername });
+      setUser((prevUser) => ({ ...prevUser, name: newUsername })); // Update state immediately
     }
   };
 
   const handleEmailChange = () => {
     if (newEmail.trim() !== "") {
       updateUserProfile({ email: newEmail });
+      setUser((prevUser) => ({ ...prevUser, email: newEmail })); // Update state immediately
     }
   };
 
@@ -82,26 +84,54 @@ const UserProfile = () => {
         <div className="user-info">
           <p>User Name</p>
           {editingUsername ? (
-            <input type="text" value={newUsername} onChange={(e) => setNewUsername(e.target.value)} className="input-field" />
+            <input
+              type="text"
+              value={newUsername}
+              onChange={(e) => setNewUsername(e.target.value)}
+              className="input-field"
+            />
           ) : (
-            <input type="text" value={user?.name || "John Doe"} className="input-field" readOnly />
+            <input
+              type="text"
+              value={user?.name || "John Doe"}
+              className="input-field"
+              readOnly
+            />
           )}
           {editingUsername ? (
-            <button onClick={handleUsernameChange} className="save-button">Save</button>
+            <button onClick={handleUsernameChange} className="save-button">
+              Save
+            </button>
           ) : (
-            <button onClick={() => setEditingUsername(true)} className="edit-button">Edit</button>
+            <button onClick={() => setEditingUsername(true)} className="edit-button">
+              Edit
+            </button>
           )}
 
           <p>Email</p>
           {editingEmail ? (
-            <input type="email" value={newEmail} onChange={(e) => setNewEmail(e.target.value)} className="input-field" />
+            <input
+              type="email"
+              value={newEmail}
+              onChange={(e) => setNewEmail(e.target.value)}
+              className="input-field"
+            />
           ) : (
-            <input type="email" value={user?.email || "johndoe@example.com"} className="input-field" readOnly />
+            <input
+              type="email"
+              value={user?.email || "johndoe@example.com"}
+              className="input-field"
+              readOnly
+            />
           )}
           {editingEmail ? (
-            <button onClick={handleEmailChange} className="save-button">Save</button>
+            <button onClick={handleEmailChange} className="save-button">
+              Save
+            </button>
           ) : (
-            <button onClick={() => setEditingEmail(true)} className="edit-button">Edit</button>
+            <button onClick={() => setEditingEmail(true)} className="edit-button">
+              Edit
+            </button>
           )}
         </div>
       </div>
