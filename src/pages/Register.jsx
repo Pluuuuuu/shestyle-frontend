@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "../CSS/Register.css";
 
 const Register = () => {
@@ -10,6 +11,9 @@ const Register = () => {
     confirmPassword: "",
   });
 
+  const [error, setError] = useState("");
+  const navigate = useNavigate(); // Hook for navigation
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -18,67 +22,71 @@ const Register = () => {
     });
   };
 
-   const handleSubmit = async (e) => {
-       e.preventDefault();
-// validation client side
-       if (
-       !formData.username ||
-       !formData.email ||
-       !formData.password ||
-       !formData.confirmPassword
-     ) {
-       alert("All fields are required!");
-       return;
-     }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-     if (formData.password !== formData.confirmPassword) {
-       alert("Passwords do not match!");
-       return;
-     }
+    // Client-side validation
+    if (
+      !formData.username ||
+      !formData.email ||
+      !formData.password ||
+      !formData.confirmPassword
+    ) {
+      setError("All fields are required!");
+      return;
+    }
 
-     if (formData.password.length < 6) {
-       alert("Password must be at least 6 characters long!");
-       return;
-     }
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords do not match!");
+      return;
+    }
 
-     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-       alert("Please enter a valid email address!");
-       return;
-     }  
+    if (formData.password.length < 6) {
+      setError("Password must be at least 6 characters long!");
+      return;
+    }
 
-  if (formData.password !== formData.confirmPassword) {
-    alert("Passwords do not match!");
-    return;
-       }
-       
-  // send data to back
-  try {
-    const response = await axios.post(
-      "http://localhost:5000/api/register",
-      formData
-    ); 
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      setError("Please enter a valid email address!");
+      return;
+    }
+
+    // Clear previous errors
+    setError("");
+
+    // Send data to the backend
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/signup",
+        formData
+      );
       console.log("Registration successful:", response.data);
-      alert("Registration successful!"); // we can not to add this
-  } catch (error) {
-    console.error(
-      "Registration failed:",
-      error.response?.data || error.message
-    );
-    alert("Registration failed. Please try again.");
-  }
-    };
-    
+      alert("Registration successful!");
+      navigate("/login"); // Navigate to the login page
+    } catch (error) {
+      console.error(
+        "Registration failed:",
+        error.response?.data || error.message
+      );
+      setError(
+        error.response?.data?.message ||
+          "Registration failed. Please try again."
+      );
+    }
+  };
+
   return (
     <div className="register-container">
       <div className="image-section">
         <img
-          src="src\assets\Registerpic.jpg" // Add image URL
+          src="src/assets/Registerpic.jpg" // Add image URL
           alt="Register"
           className="register-image"
         />
       </div>
       <div className="form-section">
         <h2>Register</h2>
+        {error && <div className="error-message">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Username</label>
