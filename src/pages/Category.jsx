@@ -19,21 +19,20 @@ const Categories = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  // const [newCategory, setNewCategory] = useState({
-  //   name: "",
-  //   background_image: "",
-  // });
-  // const [editingCategory, setEditingCategory] = useState(null);
+  const [newCategory, setNewCategory] = useState({
+    name: "",
+    background_image: "",
+  });
+  const [editingCategory, setEditingCategory] = useState(null);
 
   useEffect(() => {
-  //   // Check if the token exists, otherwise set it for testing purposes
-  //  if (!localStorage.getItem("token")) {
-  //    localStorage.setItem(
-  //      "token",
-  //      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbl9pZCI6MTAsInJvbGUiOiJzdWJhZG1pbiIsImlhdCI6MTc0MTU2NzA5NywiZXhwIjoxNzQxNTcwNjk3fQ.jzHfkAWAF3vAXdzy606hzFkefBUIX82kb_ofZfG-cpE"
-  //    ); // Set the token manually for testing
-  //  }
-
+      // Check if the token exists, otherwise set it for testing purposes
+     if (!localStorage.getItem("token")) {
+       localStorage.setItem(
+         "token",
+         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiYWR1c2VyMTMyMEBleGFtcGxlLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0Mjg2NzMxNSwiZXhwIjoxNzQyODcwOTE1fQ.sdWNhkY2rCzOQ4Q5XQ-PrOWrgp9Mb3Z-KuJVnahACL8"
+       ); // Set the token manually for testing
+     }
 
     const fetchCategories = async () => {
       try {
@@ -51,55 +50,55 @@ const Categories = () => {
     fetchCategories();
   }, []);
 
-  // const token = localStorage.getItem("token");
-  // console.log(token); // Verify the token is correctly stored
+  const token = localStorage.getItem("token");
+  console.log(token); // Verify the token is correctly stored
 
-  // const handleAddCategory = async () => {
-  //   try {
-  //     const response = await axios.post(
-  //       "http://localhost:5000/api/categories/add",
-  //       newCategory,
-  //       {
-  //         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-  //       }
-  //     );
-  //     setCategories([...categories, response.data]);
-  //     setNewCategory({ name: "", background_image: "" });
-  //   } catch (err) {
-  //     setError("Error adding category.");
-  //   }
-  // };
+  const handleAddCategory = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/categories/add",
+        newCategory,
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      );
+      setCategories([...categories, response.data]);
+      setNewCategory({ name: "", background_image: "" });
+    } catch (err) {
+      setError("Error adding category.");
+    }
+  };
 
-  // const handleDeleteCategory = async (id) => {
-  //   try {
-  //     await axios.delete(`http://localhost:5000/api/categories/delete/${id}`, {
-  //       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-  //     });
-  //     setCategories(categories.filter((category) => category.id !== id));
-  //   } catch (err) {
-  //     setError("Error deleting category.");
-  //   }
-  // };
+  const handleDeleteCategory = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/categories/delete/${id}`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+      setCategories(categories.filter((category) => category.id !== id));
+    } catch (err) {
+      setError("Error deleting category.");
+    }
+  };
 
-  // const handleEditCategory = async () => {
-  //   try {
-  //     const response = await axios.put(
-  //       `http://localhost:5000/api/categories/update/${editingCategory.id}`,
-  //       editingCategory,
-  //       {
-  //         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-  //       }
-  //     );
-  //     setCategories(
-  //       categories.map((cat) =>
-  //         cat.id === editingCategory.id ? response.data : cat
-  //       )
-  //     );
-  //     setEditingCategory(null);
-  //   } catch (err) {
-  //     setError("Error updating category.");
-  //   }
-  // };
+  const handleEditCategory = async () => {
+    try {
+      const response = await axios.put(
+        `http://localhost:5000/api/categories/update/${editingCategory.id}`,
+        editingCategory,
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      );
+      setCategories(
+        categories.map((cat) =>
+          cat.id === editingCategory.id ? response.data : cat
+        )
+      );
+      setEditingCategory(null);
+    } catch (err) {
+      setError("Error updating category.");
+    }
+  };
 
   return (
     <div className="categories-container">
@@ -114,9 +113,9 @@ const Categories = () => {
               className="category-box"
               style={{
                 backgroundImage: `url(${category.background_image})`,
-                backgroundSize: "cover",
+                backgroundSize: "cover", 
                 backgroundPosition: "center",
-                repeat: "no-repeat",
+                repeat: "no-repeat"
               }}
               onClick={() =>
                 navigate(`/category/${category.name.toLowerCase()}`)
@@ -128,7 +127,7 @@ const Categories = () => {
         </div>
       )}
 
-      {/* <div className="admin-categories-container">
+       <div className="admin-categories-container">
         <h2 className="categories-heading">Manage Categories</h2>
         <div className="add-category-form">
           <input
@@ -201,7 +200,7 @@ const Categories = () => {
             </div>
           ))}
         </div>
-      </div> */}
+      </div> 
     </div>
   );
 };
