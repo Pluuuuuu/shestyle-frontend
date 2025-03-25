@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import Categories from "./pages/Category";
 import CategoryPage from "./components/CategoryPage";
 import UserProfile from "./pages/UserProfile";
+import Home from "./pages/Home";
 
 import "./App.css";
 
@@ -22,12 +23,13 @@ const App = () => {
         >
           Login
         </Link>
-        | <Link to="/register">Register</Link>
-         | <Link to="/UserProfile">UserProfile</Link>
-          | <Link to="/category">Category</Link>
+        | <Link to="/register">Register</Link>|{" "}
+        <Link to="/UserProfile">UserProfile</Link>|{" "}
+        <Link to="/category">Category</Link>
       </nav>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/category" element={<Categories />} />
