@@ -5,7 +5,6 @@ import Register from "./pages/Register";
 import Categories from "./pages/Category";
 import CategoryPage from "./components/CategoryPage";
 import UserProfile from "./pages/UserProfile";
-import CategoryCrud from "./components/CategoryCrud";
 import "./App.css";
 
 const App = () => {
@@ -25,7 +24,6 @@ const App = () => {
         | <Link to="/register">Register</Link>|{" "}
         <Link to="/UserProfile">UserProfile</Link>|{" "}
         <Link to="/category">Category</Link>
-        <Link to="/categorycrud">Category-crud</Link>
       </nav>
       <Routes>
         <Route path="/" element={<Login />} />
@@ -34,7 +32,6 @@ const App = () => {
         <Route path="/category" element={<Categories />} />
         <Route path="/category/:categoryName" element={<CategoryPage />} />
         <Route path="/UserProfile" element={<UserProfile />} />
-        <Route path="/categorycrud" element={<CategoryCrud />} />
       </Routes>
     </Router>
   );
