@@ -30,10 +30,14 @@ const Categories = () => {
      if (!localStorage.getItem("token")) {
        localStorage.setItem(
          "token",
-         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiYWR1c2VyMTMyMEBleGFtcGxlLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0Mjg2NzMxNSwiZXhwIjoxNzQyODcwOTE1fQ.sdWNhkY2rCzOQ4Q5XQ-PrOWrgp9Mb3Z-KuJVnahACL8"
+         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiYWR1c2VyMTMyMEBleGFtcGxlLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0MjkzNDU4MCwiZXhwIjoxNzQyOTM4MTgwfQ.HXb5UvybI6dysJsNVK7D_eEzhkQV90hgv32OxPcuUHM"
        ); // Set the token manually for testing
+        console.log("Test token set:", localStorage.getItem("token"));
      }
 
+      const token = localStorage.getItem("token");
+    if ( !token ) return;
+    
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
@@ -50,29 +54,41 @@ const Categories = () => {
     fetchCategories();
   }, []);
 
-  const token = localStorage.getItem("token");
-  console.log(token); // Verify the token is correctly stored
+  // const token = localStorage.getItem("token");
+  // console.log(token); // Verify the token is correctly stored
 
   const handleAddCategory = async () => {
+    const token = localStorage.getItem( "token" );
+     if (!token) return;
+    // console.log("Token being sent:", token); // Debugging line
+    // console.log("Token from localStorage:", token); // ✅ Check if token exists in localStorage
     try {
       const response = await axios.post(
         "http://localhost:5000/api/categories/add",
         newCategory,
         {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
+      console.log("Category added successfully:", response.data); // ✅ Confirm successful request
+
       setCategories([...categories, response.data]);
       setNewCategory({ name: "", background_image: "" });
     } catch (err) {
+      console.error("Error adding category:", err);
       setError("Error adding category.");
     }
   };
 
   const handleDeleteCategory = async (id) => {
+     const token = localStorage.getItem("token");
     try {
       await axios.delete(`http://localhost:5000/api/categories/delete/${id}`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        // headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        headers: { Authorization: `Bearer ${token}` },
       });
       setCategories(categories.filter((category) => category.id !== id));
     } catch (err) {
@@ -81,12 +97,15 @@ const Categories = () => {
   };
 
   const handleEditCategory = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
     try {
       const response = await axios.put(
         `http://localhost:5000/api/categories/update/${editingCategory.id}`,
         editingCategory,
         {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+          // headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+          headers: { Authorization: `Bearer ${token}` },
         }
       );
       setCategories(
