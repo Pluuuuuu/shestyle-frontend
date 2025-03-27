@@ -1,0 +1,209 @@
+/* Global Styles */
+.home {
+  font-family: Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+/* 1ère Section - Texte + Image */
+.home-intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.intro-text {
+  flex: 1;
+  max-width: 50%;
+}
+
+.intro-text h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #8c5a5a;
+}
+
+.intro-text p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: #AAA3B4;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #8c5a5a;
+}
+
+.intro-image img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 10px;
+}
+
+/* 2ème Section - Promotions & Livraison */
+.home-promotions {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f5d1dc;
+  max-width: 1200px;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.promo-box {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* 3ème Section - Filtres de recherche */
+.home-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.home-filters select {
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* 4ème Section - New Arrivals */
+.home-title {
+  text-align: center;
+  margin: 30px 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #8c5a5a;
+}
+
+/* 5ème Section - Images des nouveautés */
+.home-arrivals {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.home-arrivals img {
+  width: 100%;
+  max-width: 220px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.home-arrivals img:hover {
+  transform: scale(1.05);
+}
+
+/* Bouton Load More */
+.load-more {
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* Responsive Design */
+/* Petits écrans (moins de 768px - mobiles) */
+@media (max-width: 768px) {
+  .home-intro {
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+  }
+
+  .intro-text {
+      max-width: 100%;
+  }
+
+  .home-promotions {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .home-filters {
+      flex-direction: column;
+      gap: 15px;
+  }
+
+  .home-arrivals {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .home-arrivals img {
+      max-width: 80%;
+  }
+}
+
+/* 📌 Écrans moyens (entre 768px et 1200px - tablettes & PC standard) */
+@media (min-width: 768px) and (max-width: 1200px) {
+  .home-intro {
+      flex-direction: row;
+      text-align: left;
+      padding: 30px;
+  }
+
+  .intro-text {
+      max-width: 60%;
+  }
+
+  .home-arrivals {
+      gap: 30px;
+  }
+}
+
+/* 📌 Grands écrans (plus de 1200px - écrans larges) */
+@media (min-width: 1200px) {
+  .home-intro {
+      max-width: 1200px;
+      padding: 60px;
+  }
+
+  .home-promotions {
+      max-width: 1200px;
+      padding: 40px;
+  }
+
+  .home-filters {
+      max-width: 1200px;
+      padding: 40px;
+  }
+
+  .home-arrivals {
+      max-width: 1300px;
+      padding: 50px;
+      gap: 50px;
+  }
+
+  .home-arrivals img {
+      max-width: 250px;
+  }
+}

@@ -1,0 +1,127 @@
+/* 🌍 Conteneur principal */
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 30px;
+  text-align: center;
+}
+
+/* 📝 Titre et Introduction */
+.contact-container h2 {
+  font-size: 2.5rem;
+  color: #8c5a5a;
+  margin-bottom: 15px;
+}
+
+.contact-intro {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+/* 📌 Conteneur Flexbox pour les 2 sections */
+.contact-content {
+  display: flex;
+  flex-direction: row;  /* Aligne les éléments en ligne */
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  text-align: left;
+}
+
+/* 📍 Section Informations de Contact - Gauche */
+.contact-info {
+  flex: 1;
+  max-width: 40%;
+  padding: 20px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.info-item span {
+  font-size: 1.5rem;
+}
+
+/* ✉️ Formulaire de Contact - Droite */
+.contact-form {
+  flex: 1;
+  max-width: 100%;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 1.1rem;
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+/* ✅ Bouton Envoyer */
+.send-btn {
+  background-color: #AAA3B4;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.send-btn:hover {
+  background-color: #8c5a5a;
+  transform: scale(1.05);
+}
+
+/* 🔥 Responsive Design */
+
+/* 📱 Petits écrans (moins de 768px - smartphones) */
+@media (max-width: 768px) {
+  .contact-content {
+      flex-direction: column;  /*  Passe en colonne sur petits écrans */
+      align-items: center;
+      text-align: center;
+  }
+
+  .contact-info, .contact-form {
+      max-width: 100%;
+  }
+
+  .info-item {
+      justify-content: center;
+  }
+
+  .contact-form {
+      margin-top: 20px;
+  }
+}
