@@ -1,0 +1,112 @@
+/* Styles généraux du footer */
+.footer {
+    background-color: #8c5a5a; /* Couleur de fond du footer */
+    color: white; /* Texte blanc */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    flex-wrap: wrap;
+  }
+  
+  /* Chaque section du footer */
+  .footer-section {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+  }
+  
+  /* Logo du footer */
+  .footer-logo {
+    width: 80px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  /* Titres des sections */
+  .footer-section h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  /* Texte des valeurs */
+  .footer-section p {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  
+  /* Icônes des moyens de paiement */
+  .payment-icons img {
+    width: 40px;
+    margin: 5px;
+  }
+  
+  /* Icônes des réseaux sociaux */
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .social-icons .icon {
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .social-icons .icon:hover {
+    transform: scale(1.2);
+  }
+  
+  /* Newsletter */
+  .newsletter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid white;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 220px;
+    margin: 0 auto;
+  }
+  
+  .newsletter input {
+    border: none;
+    padding: 8px;
+    width: 100%;
+    outline: none;
+  }
+  
+  .newsletter-btn {
+    background: white;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .newsletter-icon {
+    font-size: 18px;
+    color: #8c5a5a;
+  }
+  
+  /* Texte de l'offre exclusive */
+  .footer-section p strong {
+    font-size: 14px;
+    display: block;
+    margin-top: 10px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .footer {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .newsletter {
+      width: 100%;
+    }
+  }
+  
