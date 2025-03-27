@@ -1,4 +1,5 @@
 import React from "react";
+
 import Header from "../Components/Header"; 
 import Footer from "../Components/Footer"; 
 import "../CSS/Home.css"
@@ -71,6 +72,7 @@ const Home = () => {
 
       {/* Footer */}
       <Footer />
+
     </div>
   );
 };
