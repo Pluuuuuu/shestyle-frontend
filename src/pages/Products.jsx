@@ -1,29 +1,33 @@
-import React from "react";
-import { Link } from "react-router-dom";  // Importation de Link
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import Product1 from "../assets/Product1.png";
-import Product2 from "../assets/Product2.png";
-import Product3 from "../assets/Product3.png";
-import Product4 from "../assets/Product4.png";
-import Product5 from "../assets/Product5.png";
-import Product6 from "../assets/Product6.png";
-import Product7 from "../assets/Product7.png";
-import Product8 from "../assets/Product8.png";
 import "../CSS/Products.css";
-
-const products = [
-  { id: 1, name: "Product 1", category: "Category", image: Product1, description: "Description of Product 1" },
-  { id: 2, name: "Product 2", category: "Category", image: Product2, description: "Description of Product 2" },
-  { id: 3, name: "Product 3", category: "Category", image: Product3, description: "Description of Product 3" },
-  { id: 4, name: "Product 4", category: "Category", image: Product4, description: "Description of Product 4" },
-  { id: 5, name: "Product 5", category: "Category", image: Product5, description: "Description of Product 5" },
-  { id: 6, name: "Product 6", category: "Category", image: Product6, description: "Description of Product 6" },
-  { id: 7, name: "Product 7", category: "Category", image: Product7, description: "Description of Product 7" },
-  { id: 8, name: "Product 8", category: "Category", image: Product8, description: "Description of Product 8" },
-];
+import axios from "axios";
 
 const Products = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get("/api/products");
+        setProducts(response.data);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+
   return (
     <>
       <Header />
@@ -35,12 +39,22 @@ const Products = () => {
 
         <div className="products-grid">
           {products.map((product) => (
-            <div key={product.id} className="product-card">
-              <Link to={`/product/${product.id}`} className="product-link">
-                <img src={product.image} alt={product.name} className="product-image" />
+
+            <div key={product._id} className="product-card">
+              <Link to={`/product/${product._id}`} className="product-link">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="product-image"
+                  onError={(e) => {
+                    e.target.src = "/path/to/default-image.png";
+                  }}
+                />
                 <div className="product-details">
                   <h3>{product.name}</h3>
                   <p>{product.category}</p>
+                  <p>${product.price}</p>
+
                 </div>
               </Link>
               <button className="add-to-cart">Add to cart</button>
@@ -53,4 +67,6 @@ const Products = () => {
   );
 };
 
+
 export default Products;
+
