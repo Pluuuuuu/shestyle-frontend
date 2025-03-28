@@ -39,6 +39,7 @@ const Products = () => {
 
         <div className="products-grid">
           {products.map((product) => (
+
             <div key={product._id} className="product-card">
               <Link to={`/product/${product._id}`} className="product-link">
                 <img
@@ -53,6 +54,7 @@ const Products = () => {
                   <h3>{product.name}</h3>
                   <p>{product.category}</p>
                   <p>${product.price}</p>
+
                 </div>
               </Link>
               <button className="add-to-cart">Add to cart</button>
@@ -65,4 +67,6 @@ const Products = () => {
   );
 };
 
+
 export default Products;
+
