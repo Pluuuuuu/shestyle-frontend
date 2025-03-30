@@ -6,6 +6,7 @@ import Categories from "./pages/Category";
 import CategoryPage from "./components/CategoryPage";
 import UserProfile from "./pages/UserProfile";
 import Home from "./pages/Home";
+import Cart from "./pages/Cart";
 
 import "./App.css";
 
@@ -25,7 +26,8 @@ const App = () => {
         </Link>
         | <Link to="/register">Register</Link>|{" "}
         <Link to="/UserProfile">UserProfile</Link>|{" "}
-        <Link to="/category">Category</Link>
+        <Link to="/category">Category</Link> |
+        <Link to="/Cart">Cart</Link>
       </nav>
       <Routes>
         <Route path="/" element={<Login />} />
