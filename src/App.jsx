@@ -16,7 +16,7 @@ import "./App.css";
 const App = () => {
   return (
     <Router>
-      {/* <nav>
+     {/* <nav>
         |
         <Link
           style={{
