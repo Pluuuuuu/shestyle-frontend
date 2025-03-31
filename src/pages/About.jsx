@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../CSS/About.css";
-
+import { Link } from "react-router-dom";
 const About = () => {
   return (
     <>
@@ -48,7 +48,14 @@ const About = () => {
 
         {/* Shop Now Button */}
         <div className="shop-now-container">
-          <button className="shop-now-btn">Shop Now</button>
+          
+          <Link
+            to="/product"
+            className="shop-now-btn"
+            style={{ textDecoration: "none" }}
+          >
+            Shop Now
+          </Link>
         </div>
       </main>
 
