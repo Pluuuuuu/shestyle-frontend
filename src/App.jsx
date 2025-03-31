@@ -8,31 +8,14 @@ import UserProfile from "./pages/UserProfile";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import Product from "./pages/Products";
-import ProductDetails from "./pages/ProductDetails";
+import ProductList from "./components/ProductList";
+import ProductDetail from "./components/ProductDetail";
 import Checkout from "./pages/Checkout";
 import "./App.css";
 
 const App = () => {
   return (
     <Router>
-      {/* <nav>
-        |
-        <Link
-          style={{
-            alignItems: "center",
-            alignContent: "center",
-            justifyContent: "center",
-          }}
-          to="/login"
-        >
-          Login
-        </Link>
-        | <Link to="/register">Register</Link>|
-        <Link to="/UserProfile">UserProfile</Link>|
-        <Link to="/category">Category</Link>|<Link to="/about">About</Link>|
-        <Link to="/contactus">Contact</Link>|<Link to="/product">Product</Link>|
-      </nav> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -41,10 +24,10 @@ const App = () => {
         <Route path="/category/:categoryName" element={<CategoryPage />} />
         <Route path="/UserProfile" element={<UserProfile />} />
         <Route path="/about" element={<About />} />
-        <Route path="/product" element={<Product />} />
-        <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/contactus" element={<Contact />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/product" element={<ProductList />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
       </Routes>
     </Router>
   );

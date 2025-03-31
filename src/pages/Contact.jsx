@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "../Components/Header";
-import Footer from "../Components/Footer";
-import "../CSS/Contact.css"; 
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import "../CSS/Contact.css";
 
 const Contact = () => {
   return (
@@ -45,7 +45,9 @@ const Contact = () => {
               <label>Message</label>
               <textarea placeholder="Write your message..." required></textarea>
             </div>
-            <button type="submit" className="send-btn">Send Message</button>
+            <button type="submit" className="send-btn">
+              Send Message
+            </button>
           </form>
         </div>
       </div>
@@ -55,4 +57,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
