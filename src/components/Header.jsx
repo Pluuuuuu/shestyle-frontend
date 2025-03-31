@@ -16,26 +16,16 @@ const Header = () => {
 
       {/* Navigation */}
       <nav className="nav-links">
-        {/* <a href="#">Home</a>
-        <a href="#">Products</a>
-        <a href="#">About</a>
-        <a href="#">Checkout</a>
-        <a href="#">Contact</a> */}
-        |<Link to="/">Home</Link>|
-        <Link
-          // style={{
-          //   alignItems: "center",
-          //   alignContent: "center",
-          //   justifyContent: "center",
-          // }}
-          to="/login"
-        >
-          Login
-        </Link>
-        | <Link to="/register">Register</Link>|
-        <Link to="/category">Category</Link>|<Link to="/about">About</Link>|
-        <Link to="/contactus">Contact</Link>|<Link to="/product">Products</Link>
-        |
+        |<Link to="/">Home</Link>|<Link to="/login">Login</Link>|
+        <Link to="/register">Register</Link>|
+        <div className="dropdown">
+          <span>Shop</span>
+          <div className="dropdown-content">
+            <Link to="/category">Category</Link>
+            <Link to="/product">Products</Link>
+          </div>
+        </div>
+        |<Link to="/about">About</Link>|<Link to="/contactus">Contact</Link>|
       </nav>
 
       {/* Barre de recherche */}

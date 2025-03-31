@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../CSS/Home.css";
@@ -23,8 +23,16 @@ const Home = () => {
             empowerment.
           </h2>
           <p>It enhances confidence and celebrates individuality.</p>
-          <button className="btn">Discover more</button>
-          <button className="btn">Shop Now</button>
+          <Link to="/about" className="btn" style={{ textDecoration: "none" }}>
+            Discover More
+          </Link>
+          <Link
+            to="/product"
+            className="btn"
+            style={{ textDecoration: "none" }}
+          >
+            Shop Now
+          </Link>
         </div>
         <div className="intro-image">
           <img src={homeImage} alt="Fashion Style" />
@@ -42,7 +50,9 @@ const Home = () => {
         </div>
       </div>
       <div>
-        <button className="btn">Shop Now</button>
+        <Link to="/product" className="btn" style={{ textDecoration: "none"}}>
+          Shop Now
+        </Link>
       </div>
 
       {/* 3ème Section - Filtres de recherche */}

@@ -45,7 +45,7 @@ const Login = () => {
       );
       console.log("Login successful:", response.data);
       alert("Login successful!");
-      navigate("/home"); // Navigate to the home page
+      navigate("/"); // Navigate to the home page
     } catch (error) {
       console.error("Login failed:", error.response?.data || error.message);
       setError(
