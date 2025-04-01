@@ -6,6 +6,10 @@ import Categories from "./pages/Category";
 import CategoryPage from "./components/CategoryPage";
 import UserProfile from "./pages/UserProfile";
 import Home from "./pages/Home";
+import Products from "./pages/Products";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Orders from "./pages/Orders"; // Import the Orders page
 
 import "./App.css";
 
@@ -26,6 +30,7 @@ const App = () => {
         | <Link to="/register">Register</Link>|{" "}
         <Link to="/UserProfile">UserProfile</Link>|{" "}
         <Link to="/category">Category</Link>
+        <Link to="/orders">Orders</Link> {/* Added Orders link */}
       </nav>
       <Routes>
         <Route path="/" element={<Login />} />
@@ -35,6 +40,10 @@ const App = () => {
         <Route path="/category" element={<Categories />} />
         <Route path="/category/:categoryName" element={<CategoryPage />} />
         <Route path="/UserProfile" element={<UserProfile />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/orders" element={<Orders />} /> 
       </Routes>
     </Router>
   );
