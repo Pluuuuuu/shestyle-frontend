@@ -1,8 +1,8 @@
 import React from "react";
-
-import Header from "../Components/Header"; 
-import Footer from "../Components/Footer"; 
-import "../CSS/Home.css"
+import { Link } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import "../CSS/Home.css";
 import fashion1 from "../assets/fashion1.png";
 import fashion2 from "../assets/fashion2.png";
 import fashion3 from "../assets/fashion3.png";
@@ -18,10 +18,21 @@ const Home = () => {
       {/* 1ère Section - Texte + Image */}
       <div className="home-intro">
         <div className="intro-text">
-          <h2><strong>SHE STYLE</strong> is a form of self-expression and empowerment.</h2>
+          <h2>
+            <strong>SHE STYLE</strong> is a form of self-expression and
+            empowerment.
+          </h2>
           <p>It enhances confidence and celebrates individuality.</p>
-          <button className="btn">Discover more</button>
-          <button className="btn">Shop Now</button>
+          <Link to="/about" className="btn" style={{ textDecoration: "none" }}>
+            Discover More
+          </Link>
+          <Link
+            to="/product"
+            className="btn"
+            style={{ textDecoration: "none" }}
+          >
+            Shop Now
+          </Link>
         </div>
         <div className="intro-image">
           <img src={homeImage} alt="Fashion Style" />
@@ -29,7 +40,7 @@ const Home = () => {
       </div>
 
       {/* 2ème Section - Promotions & Livraison */}
-      
+
       <div className="home-promotions">
         <div className="promo-box">
           <h3>45% Off on the New Collection!</h3>
@@ -39,19 +50,37 @@ const Home = () => {
         </div>
       </div>
       <div>
-        <button className="btn">Shop Now</button>
+        <Link to="/product" className="btn" style={{ textDecoration: "none"}}>
+          Shop Now
+        </Link>
       </div>
 
       {/* 3ème Section - Filtres de recherche */}
       <div className="home-filters">
-        <select><option>Body Fit</option></select>
-        <select><option>Color</option></select>
-        <select><option>Style</option></select>
-        <select><option>Size</option></select>
-        <select><option>Brand</option></select>
-        <select><option>Category</option></select>
-        <select><option>Product type</option></select>
-        <select><option>Price Range</option></select>
+        <select>
+          <option>Body Fit</option>
+        </select>
+        <select>
+          <option>Color</option>
+        </select>
+        <select>
+          <option>Style</option>
+        </select>
+        <select>
+          <option>Size</option>
+        </select>
+        <select>
+          <option>Brand</option>
+        </select>
+        <select>
+          <option>Category</option>
+        </select>
+        <select>
+          <option>Product type</option>
+        </select>
+        <select>
+          <option>Price Range</option>
+        </select>
       </div>
 
       {/* 4ème Section - New Arrivals */}
@@ -72,7 +101,6 @@ const Home = () => {
 
       {/* Footer */}
       <Footer />
-
     </div>
   );
 };
